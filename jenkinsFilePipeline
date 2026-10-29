@@ -1,64 +1,34 @@
-// Define the Jenkins Declarative Pipeline.
 pipeline {
-
-    // Allow Jenkins to execute the pipeline on any available agent.
     agent any
 
-    // Define all stages of the CI/CD pipeline.
+    options {
+        skipDefaultCheckout(true)
+    }
+
     stages {
-
-        // Stage 1: Download the source code from GitHub.
         stage('Checkout Code') {
-
-            // Define the steps to execute in this stage.
             steps {
+                git branch: 'main',
+                    url: 'https://github.com/AbWaris7/Bookseller-cicd'
+            }
+        }
 
-                // Clone the repository from the specified GitHub URL.
-                git 'https://github.com/AbWaris7/Bookseller-cicd'
-
-            } // End of Checkout Code steps.
-
-        } // End of Checkout Code stage.
-
-        // Stage 2: Build the application.
         stage('Build') {
-
-            // Define the steps to execute in this stage.
             steps {
+                sh 'echo "Building the app"'
+            }
+        }
 
-                // Execute a shell command that prints a build message.
-                sh 'echo "building the app"'
-
-            } // End of Build steps.
-
-        } // End of Build stage.
-
-        // Stage 3: Test the application.
         stage('Test') {
-
-            // Define the steps to execute in this stage.
             steps {
-
-                // Execute a shell command that prints a test message.
                 sh 'echo "Running tests"'
+            }
+        }
 
-            } // End of Test steps.
-
-        } // End of Test stage.
-
-        // Stage 4: Deploy the application.
         stage('Deploy') {
-
-            // Define the steps to execute in this stage.
             steps {
-
-                // Execute a shell command that prints a deployment message.
-                sh 'echo "deploying"'
-
-            } // End of Deploy steps.
-
-        } // End of Deploy stage.
-
-    } // End of all pipeline stages.
-
-} // End of the Jenkins pipeline.
+                sh 'echo "Deploying"'
+            }
+        }
+    }
+}
