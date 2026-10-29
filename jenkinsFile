@@ -1,22 +1,35 @@
-
+// Define a declarative Jenkins pipeline.
 pipeline {
+
+    // Allow Jenkins to run this pipeline on any available agent.
     agent any
 
+    // Define the stages that execute in this pipeline.
     stages {
+
+        // Start the Build stage.
         stage('Build') {
+            // Define the actions to perform during the Build stage.
             steps {
+                // Print a message in the Jenkins console output.
                 echo 'Building the project...'
             }
         }
 
+        // Start the Test stage.
         stage('Test') {
+            // Define the actions to perform during the Test stage.
             steps {
+                // Print a message in the Jenkins console output.
                 echo 'Running tests...'
             }
         }
 
+        // Start the Deploy stage.
         stage('Deploy') {
+            // Define the actions to perform during the Deploy stage.
             steps {
+                // Print a message in the Jenkins console output.
                 echo 'Deploying application...'
             }
         }
